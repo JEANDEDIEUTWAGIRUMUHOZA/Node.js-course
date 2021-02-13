@@ -39,3 +39,12 @@ const presentation = (userName, userAage, userHasAccount)=>{
 };
 console.log(presentation(name,age,hasAccount));
 
+//an other arrow functions syntax
+const multiplication = (a,b)=> a * b;
+
+console.log(multiplication(7,5));
+
+//one element arrow function
+const checkAge = (c) => 2021 - c;
+
+console.log(checkAge(1992));
