@@ -17,7 +17,7 @@
  //As we don't change the variables of our server, we can declare them as constants
 
  const http = require('http');
-
+ const fs = require('fs');
 /*
  //function to listen a request
  //Listen request and return a response
@@ -34,6 +34,7 @@
  const server = http.createServer((req, res) => {
      //console.log(req);
      const url = req.url;
+     const method = req.method;
      if (url === '/'){
 
         res.setHeader('Content-Type', 'text/html');
@@ -43,9 +44,19 @@
         res.write('</html>');
         
         return res.end();
-   
+     }
+     /*if page is /message in post, we want to redirect
+     *the user to '/'
+      */
+
+     if(url === '/message' &&  method === 'POST'){
+         fs.writeFileSync('message.txt','DUMMY');
+         res.statusCode = 302;
+         res.setHeader('Location','/');
+         return res.end();
 
      }
+ 
      //process.exit(); => to stop the server
      //CTRL + C to quit running Node.js server
      //if made changes, think restart the server
