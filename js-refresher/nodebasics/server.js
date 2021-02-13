@@ -32,7 +32,20 @@
 
  //call back function for server to listen requests and return responses
  const server = http.createServer((req, res) => {
-     console.log(req);
+     //console.log(req);
+     const url = req.url;
+     if (url === '/'){
+
+        res.setHeader('Content-Type', 'text/html');
+        res.write('<html>');
+        res.write('<head><title>Enter message</title></head>');
+        res.write('<body><form action="/message" method="POST"><input type="text"><button type="submit">Send</button></form></body>')
+        res.write('</html>');
+        
+        return res.end();
+   
+
+     }
      //process.exit(); => to stop the server
      //CTRL + C to quit running Node.js server
      //if made changes, think restart the server
