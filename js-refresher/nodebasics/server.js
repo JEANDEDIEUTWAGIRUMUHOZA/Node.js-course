@@ -33,6 +33,19 @@
  //call back function for server to listen requests and return responses
  const server = http.createServer((req, res) => {
      console.log(req);
+     //process.exit(); => to stop the server
+     //CTRL + C to quit running Node.js server
+     //if made changes, think restart the server
+
+     //set response
+     res.setHeader('Content-Type', 'text/html');
+     res.write('<html>');
+     res.write('<head><title>First page</title></head>');
+     res.write('<body><h1>Hello World form Node.js</h1></body>')
+     res.write('</html>');
+
+     //we tell node that we have finished our HTML code, we can't put code after
+     res.end();
 
  });
 
