@@ -34,8 +34,9 @@
 
  //import routes file that contains modules
 
- 
  const routes = require('./routes');
+
+ 
  console.log(routes.someText);
  const server = http.createServer(routes.handler);
      //console.log(req);

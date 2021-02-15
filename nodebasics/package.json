@@ -1,0 +1,16 @@
+{
+  "name": "nodebasics",
+  "version": "1.0.0",
+  "description": "Node js course by Max",
+  "main": "routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "node server.js"
+  },
+  "author": "Jean de Dieu TWAGIRUMUHOZA",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
