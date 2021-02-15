@@ -5,24 +5,27 @@ const http = require('http');
  const bodyParser = require('body-parser');//after body parser installation
 
  const app = express();
+
+ //import admin Routes
+
+ const adminRoutes = require('./routes/admin');
+
+ //import shop routes
+
+ const shopRoutes =  require('./routes/shop');
+
+ //use admin Routes
+
+ app.use(adminRoutes);
+
+ //use sho Routes
+
+ app.use(shopRoutes);
  
- app.use(bodyParser.urlencoded());//after body parser installation
+ app.use(bodyParser.urlencoded({extended: false}));//after body parser installation
 
  //handling request and return response using Middleware
 
- //a specific route: /add-product
- app.use('/add-product',(req, res, next) => {
-    console.log('In an other the middleware');
-    res.send('<form action="/product" method="POST"><input type="text"  name="title" value="male"><button type="submit">Add product</button></form>');//send a response and attach a body of any type, here will be a text one
-    //next();//allows the request to continue to the next middleware in line, here we don't need it as it will be a different page
-});
-
-//app.post
-app.post('/product',(req, res, next) =>{
-    //getting body of incoming request
-    console.log(req.body);
-    res.redirect('/');
-});
 
 /*a specific route: /contact-form
 app.use('/contact-form',(req, res, next) => {
@@ -44,12 +47,16 @@ app.use('/contact-form',(req, res, next) => {
 // const routes = require('./routes');
 
 
- const server = http.createServer(app);
+
      //console.log(req);
      /*const url = req.url;
      const method = req.method;*/
-    
+ //const server = http.createServer(app);
 
+ //sendin error 404 page not found
+ app.use((req, res, next) => {
+    res.status(404).send('<h1>Page not found</h1>');
+ });
  app.listen(4000);
 
 
