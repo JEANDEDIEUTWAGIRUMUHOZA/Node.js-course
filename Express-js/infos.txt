@@ -1,3 +1,6 @@
 //get package.json: npm init
 
 //install body parser: npm install --save body-parser
+
+ //res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
+});=> this will work both on windows and linux operating systems

@@ -1,24 +1,21 @@
-//in this file, we will put the code that will help us to code the admin side
+const path = require('path');
+
 const express = require('express');
-const app = express();
+
+//point to our paths file, see util directory/path.js
+const rootDir = require('../util/path');
 
 const router = express.Router();
 
- //a specific route: /add-product using router
- router.get('/add-product',(req, res, next) => {
-
-    res.send('<form action="/add-product" method="POST"><input type="text"  name="title" value="male"><button type="submit">Add product</button></form>'
-    
-    );//send a response and attach a body of any type, here will be a text one
-    //next();//allows the request to continue to the next middleware in line, here we don't need it as it will be a different page
+// /admin/add-product => GET
+router.get('/add-product', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'));
 });
 
-//app.post
-router.post('/product',(req, res, next) =>{
-    //getting body of incoming request
-    console.log(req.body);
-    res.redirect('/');
+// /admin/add-product => POST
+router.post('/add-product', (req, res, next) => {
+  console.log(req.body);
+  res.redirect('/');
 });
-
 
 module.exports = router;
