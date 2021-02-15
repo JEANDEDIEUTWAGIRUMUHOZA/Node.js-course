@@ -1,0 +1,3 @@
+//get package.json: npm init
+
+//install body parser: npm install --save body-parser
