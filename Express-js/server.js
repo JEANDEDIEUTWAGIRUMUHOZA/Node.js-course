@@ -1,4 +1,7 @@
-const http = require('http');
+
+//My code
+
+/*const http = require('http');
 
  //import express.js
  const express =  require('express');
@@ -50,7 +53,7 @@ app.use('/contact-form',(req, res, next) => {
 
      //console.log(req);
      /*const url = req.url;
-     const method = req.method;*/
+     const method = req.method;
  //const server = http.createServer(app);
 
  //sendin error 404 page not found
@@ -58,6 +61,32 @@ app.use('/contact-form',(req, res, next) => {
     res.status(404).send('<h1>Page not found</h1>');
  });
  app.listen(4000);
+
+
+*/
+
+
+//Max code 
+
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+});
+
+app.listen(4000);
 
 
 
