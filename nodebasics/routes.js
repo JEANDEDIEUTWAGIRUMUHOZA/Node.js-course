@@ -31,14 +31,15 @@ const requestHandler = (req, res) => {
              const parseBody = Buffer.concat(body).toString();
              const message = parseBody.split('=')[1];
              //use writeFile() for non-blocking code
-             fs.writeFileSync('message2.txt',message);//error on this section
+             fs.writeFileSync('message2.txt',message, err => {
+                res.statusCode = 302;
+                res.setHeader('Location','/');
+                return res.end();
+
+             });//error on this section
              //console.log(message);
          });
-    
-         res.statusCode = 302;
-         res.setHeader('Location','/');
-         return res.end();
-    
+  
      }
     
      //process.exit(); => to stop the server
@@ -61,7 +62,7 @@ const requestHandler = (req, res) => {
 
 module.exports = {
     handler : requestHandler,
-    someText : 'Du texte pour tester'
+    someText : 'Du texte pour tester les modules'
 
 
 } 
