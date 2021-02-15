@@ -17,3 +17,8 @@
 //Syntax errors: syntax,read the errors and check if for example curly braces are closed etc
 //Runtime errors: errors in execution
 //Logical errors: we will not find the message
+
+
+
+//Express JS, a framework that we install inside our Node Project, it gives a lot of utilities
+//Other Node frameworks: Vanilla Node.js,Adonis.js: Laravel inspired for PHP, Koa,Sails.js and more
