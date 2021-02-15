@@ -1,4 +1,4 @@
 # Node.js-course notes
 
 
-Course by Maximilian Schwarzmüller
+Course by Maximilian Schwarzmüller - Udemy
