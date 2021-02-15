@@ -7,7 +7,7 @@ const router = express.Router();
  //a specific route: /add-product using router
  router.get('/add-product',(req, res, next) => {
 
-    res.send('<form action="/product" method="POST"><input type="text"  name="title" value="male"><button type="submit">Add product</button></form>'
+    res.send('<form action="/add-product" method="POST"><input type="text"  name="title" value="male"><button type="submit">Add product</button></form>'
     
     );//send a response and attach a body of any type, here will be a text one
     //next();//allows the request to continue to the next middleware in line, here we don't need it as it will be a different page

@@ -16,7 +16,7 @@ const http = require('http');
 
  //use admin Routes
 
- app.use(adminRoutes);
+ app.use('/admin',adminRoutes);
 
  //use sho Routes
 
@@ -35,11 +35,11 @@ app.use('/contact-form',(req, res, next) => {
 });*/
 
 
- app.use('/',(req, res, next) => {
-    console.log('In an other the middleware');
+/* app.use('/',(req, res, next) => {
+   // console.log('In an other the middleware');
     res.send('<h1>Hello from Express.js</h1>');//send a response and attach a body of any type, here will be a text one
-    next();//allows the request to continue to the next middleware in line
-});
+    //next();//allows the request to continue to the next middleware in line
+});*/
 
 
  //import routes file that contains modules
