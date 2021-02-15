@@ -50,7 +50,21 @@
       */
 
      if(url === '/message' &&  method === 'POST'){
-         fs.writeFileSync('message.txt','DUMMY');
+         //listen to the data event to buffer the incoming data
+         const body = [];
+         req.on('data', (chunk) =>{//function to be executed when a piece of data comes in, chunck: gros morceau
+             console.log(chunk);
+             body.push(chunk);//we push our data in the body array
+            
+         });
+
+         req.on('end', ()=>{
+             const parseBody = Buffer.concat(body).toString();
+             const message = parseBody.split('=')[1];
+             fs.writeFileSync('message2.txt',message);//error on this section
+             //console.log(message);
+         });
+    
          res.statusCode = 302;
          res.setHeader('Location','/');
          return res.end();
